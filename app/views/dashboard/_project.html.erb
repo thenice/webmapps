@@ -1,0 +1,14 @@
+<div class = "content_box">
+	<div class = "title">
+		<div class = "header">
+			<%= icon :title => :package, :size => :large %> <%= project.title %> 
+		</div>
+	<div class = "content">
+		<div class = "field_value">
+			<div class = "field">options</div>
+			<div class = "value">
+				<%= icon :name => 'Display_Map.png', :size => :medium, :type => 'Devices', :gis => true %><%= link_to 'Launch Mapper', :controller => 'client', :action => 'webmapps',  :id => project.id %> | <%= icon :title => :globe, :size => :medium %> <%= link_to "project community", :controller => 'projects', :action => 'show', :id => project.id %> 
+			</div>
+		</div>
+	</div>
+</div>

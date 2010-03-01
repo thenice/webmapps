@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  buffer_size: 1.5
+  buffer_fill_color: MyString
+  buffer_stroke_color: MyString
+  fill_color: MyString
+  stroke_color: MyString
+  stroke_weight: 1.5
+  opacity: 1.5
+  layer_id: 1
+
+two:
+  buffer_size: 1.5
+  buffer_fill_color: MyString
+  buffer_stroke_color: MyString
+  fill_color: MyString
+  stroke_color: MyString
+  stroke_weight: 1.5
+  opacity: 1.5
+  layer_id: 1

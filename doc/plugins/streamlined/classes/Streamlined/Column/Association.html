@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Streamlined::Column::Association</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Streamlined::Column::Association</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/streamlined/lib/streamlined/column/association_rb.html">
+                vendor/plugins/streamlined/lib/streamlined/column/association.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Base.html">
+                Streamlined::Column::Base
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Wrapper around <a href="Association.html">ActiveRecord::Association</a>.
+Keeps track of the underlying association, the <a
+href="../View.html">View</a> definition and the Summary definition.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000009">associables</a>&nbsp;&nbsp;
+      <a href="#M000005">association?</a>&nbsp;&nbsp;
+      <a href="#M000007">edit_view=</a>&nbsp;&nbsp;
+      <a href="#M000006">filterable?</a>&nbsp;&nbsp;
+      <a href="#M000010">items_for_select</a>&nbsp;&nbsp;
+      <a href="#M000003">new</a>&nbsp;&nbsp;
+      <a href="#M000016">render_quick_add</a>&nbsp;&nbsp;
+      <a href="#M000013">render_select_with_streamlined_none</a>&nbsp;&nbsp;
+      <a href="#M000014">render_td_edit</a>&nbsp;&nbsp;
+      <a href="#M000012">render_td_list</a>&nbsp;&nbsp;
+      <a href="#M000015">render_td_new</a>&nbsp;&nbsp;
+      <a href="#M000011">render_td_show</a>&nbsp;&nbsp;
+      <a href="#M000017">should_render_quick_add?</a>&nbsp;&nbsp;
+      <a href="#M000008">show_view=</a>&nbsp;&nbsp;
+      <a href="#M000004">table_name</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">edit_view</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">options_for_select</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">show_view</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">underlying_association</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(assoc, parent_model, edit, show)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 23</span>
+23:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">assoc</span>, <span class="ruby-identifier">parent_model</span>, <span class="ruby-identifier">edit</span>, <span class="ruby-identifier">show</span>)
+24:     <span class="ruby-ivar">@underlying_association</span> = <span class="ruby-identifier">assoc</span>
+25:     <span class="ruby-ivar">@parent_model</span> = <span class="ruby-identifier">parent_model</span>
+26:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">edit_view</span> = <span class="ruby-identifier">edit</span>
+27:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">show_view</span> = <span class="ruby-identifier">show</span>
+28:     <span class="ruby-ivar">@human_name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">humanize</span>
+29:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">associables</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a list of all the classes that can be used to satisfy this
+relationship. In a polymorphic relationship, it is the union of every type
+that is configured :as the relationship type. For direct associations, it
+is the listed type of the relationship.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 71</span>
+71:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">associables</span>             
+72:     <span class="ruby-keyword kw">return</span> [<span class="ruby-ivar">@underlying_association</span>.<span class="ruby-identifier">class_name</span>.<span class="ruby-identifier">constantize</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@underlying_association</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:polymorphic</span>]
+73:     <span class="ruby-identifier">results</span> = []
+74:     <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>(<span class="ruby-constant">Class</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
+75:       <span class="ruby-identifier">results</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">reflect_on_all_associations</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:as</span>]}.<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@underlying_association</span>.<span class="ruby-identifier">name</span>)
+76:     <span class="ruby-keyword kw">end</span>
+77:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">results</span>
+78:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">association?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 35</span>
+35:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">association?</span>
+36:     <span class="ruby-keyword kw">true</span>
+37:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">edit_view=</span><span class="method-args">(opts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 43</span>
+43:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_view=</span>(<span class="ruby-identifier">opts</span>)
+44:     <span class="ruby-ivar">@edit_view</span> = <span class="ruby-keyword kw">case</span>(<span class="ruby-identifier">opts</span>)
+45:     <span class="ruby-keyword kw">when</span>(<span class="ruby-constant">Symbol</span>)
+46:       <span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">EditViews</span>.<span class="ruby-identifier">create_relationship</span>(<span class="ruby-identifier">opts</span>)
+47:     <span class="ruby-keyword kw">when</span>(<span class="ruby-constant">Array</span>)
+48:       <span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">EditViews</span>.<span class="ruby-identifier">create_relationship</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+49:     <span class="ruby-keyword kw">when</span>(<span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>)
+50:       <span class="ruby-identifier">opts</span>
+51:     <span class="ruby-keyword kw">else</span>
+52:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span>
+53:     <span class="ruby-keyword kw">end</span>
+54:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">filterable?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 39</span>
+39:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filterable?</span>
+40:     <span class="ruby-operator">!</span><span class="ruby-identifier">filter_column</span>.<span class="ruby-identifier">blank?</span>
+41:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">items_for_select</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns an array of all items that can be selected for this association.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 81</span>
+81:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">items_for_select</span>
+82:     <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">class_name</span>.<span class="ruby-identifier">constantize</span>
+83:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">associables</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+84:       <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>)
+85:     <span class="ruby-keyword kw">else</span>
+86:       <span class="ruby-identifier">items</span> = {}
+87:       <span class="ruby-identifier">associables</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span> <span class="ruby-identifier">items</span>[<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>) }
+88:       <span class="ruby-identifier">items</span>
+89:     <span class="ruby-keyword kw">end</span>
+90:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">render_quick_add</span><span class="method-args">(view)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 140</span>
+140:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_quick_add</span>(<span class="ruby-identifier">view</span>)
+141:     <span class="ruby-identifier">url</span> = <span class="ruby-identifier">view</span>.<span class="ruby-identifier">url_for</span>(<span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'quick_add'</span>, <span class="ruby-identifier">:model_class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">class_name</span>, <span class="ruby-identifier">:select_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">form_field_id</span>)
+142:     <span class="ruby-identifier">image</span> = <span class="ruby-identifier">view</span>.<span class="ruby-identifier">image_tag</span>(<span class="ruby-value str">'streamlined/add_16.png'</span>, 
+143:                            <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;sl_qa_#{parent_model.class_name.underscore}_#{name}&quot;</span>, <span class="ruby-identifier">:alt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Quick Add'</span>,
+144:                            <span class="ruby-identifier">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Quick Add'</span>, <span class="ruby-identifier">:border</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'0'</span>, <span class="ruby-identifier">:hspace</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;sl_quick_add_link&quot;</span>)
+145:     <span class="ruby-identifier">view</span>.<span class="ruby-identifier">link_to</span> <span class="ruby-identifier">image</span>, <span class="ruby-identifier">url</span>
+146:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">render_select_with_streamlined_none</span><span class="method-args">(view, object, method, choices, options, html_options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+TODO: moved STREAMLINED_NONE smarts into a separate component
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 108</span>
+108:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_select_with_streamlined_none</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">object</span>, <span class="ruby-identifier">method</span>, <span class="ruby-identifier">choices</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">html_options</span>)
+109:     <span class="ruby-identifier">normal_select</span> = <span class="ruby-identifier">view</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">method</span>, <span class="ruby-identifier">choices</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">html_options</span>)
+110:     <span class="ruby-identifier">name</span> = <span class="ruby-node">&quot;#{object}[#{method}][]&quot;</span>
+111:     <span class="ruby-identifier">hidden_none_select</span> = <span class="ruby-identifier">view</span>.<span class="ruby-identifier">hidden_field_tag</span>(<span class="ruby-identifier">name</span>, <span class="ruby-constant">STREAMLINED_SELECT_NONE</span>)
+112:     <span class="ruby-identifier">normal_select</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">hidden_none_select</span>
+113:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="#M000014" class="method-signature">
+          <span class="method-name">render_td_edit</span><span class="method-args">(view, item)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 115</span>
+115:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_td_edit</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">item</span>)
+116:     <span class="ruby-identifier">result</span> = <span class="ruby-value str">&quot;[TBD: editable associations]&quot;</span>
+117:     <span class="ruby-keyword kw">case</span>
+118:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">has_many?</span>, <span class="ruby-identifier">has_and_belongs_to_many?</span>
+119:       <span class="ruby-identifier">choices</span> = <span class="ruby-identifier">options_for_select</span> <span class="ruby-value">? </span><span class="ruby-identifier">custom_options_for_select</span>(<span class="ruby-identifier">view</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">standard_options_for_select</span>
+120:       <span class="ruby-identifier">selected_choices</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">id</span>} <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>)
+121:       <span class="ruby-identifier">result</span> = <span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">Components</span><span class="ruby-operator">::</span><span class="ruby-constant">Select</span>.<span class="ruby-identifier">render</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+122:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">view</span> = <span class="ruby-identifier">view</span>
+123:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">object</span> = <span class="ruby-identifier">model_underscore</span>
+124:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">method</span> = <span class="ruby-identifier">name</span>
+125:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">choices</span> = <span class="ruby-identifier">choices</span>
+126:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">options</span> = {<span class="ruby-identifier">:selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">selected_choices</span> }
+127:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">html_options</span> = {<span class="ruby-identifier">:size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>, <span class="ruby-identifier">:multiple</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>}
+128:       <span class="ruby-keyword kw">end</span>
+129:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">belongs_to?</span>
+130:       <span class="ruby-identifier">choices</span> = <span class="ruby-identifier">options_for_select</span> <span class="ruby-value">? </span><span class="ruby-identifier">custom_options_for_select</span>(<span class="ruby-identifier">view</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">standard_options_for_select</span>
+131:       <span class="ruby-identifier">choices</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">unassigned_option</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_can_be_unassigned?</span>(<span class="ruby-identifier">parent_model</span>, <span class="ruby-identifier">name</span>)
+132:       <span class="ruby-identifier">selected_choice</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">id</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>)
+133:       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">view</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">model_underscore</span>, <span class="ruby-identifier">primary_key_name</span>, <span class="ruby-identifier">choices</span>, { <span class="ruby-identifier">:selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">selected_choice</span> }, <span class="ruby-identifier">html_options</span>)
+134:       <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">render_quick_add</span>(<span class="ruby-identifier">view</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">should_render_quick_add?</span>(<span class="ruby-identifier">view</span>)
+135:     <span class="ruby-keyword kw">end</span>
+136:     <span class="ruby-identifier">append_help</span>(<span class="ruby-identifier">result</span>)
+137:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">render_td_list</span><span class="method-args">(view, item)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 97</span>
+ 97:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_td_list</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">item</span>)
+ 98:     <span class="ruby-identifier">id</span> = <span class="ruby-identifier">relationship_div_id</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">item</span>, <span class="ruby-identifier">class_name</span>)
+ 99:     <span class="ruby-identifier">content</span> = <span class="ruby-identifier">render_td_show</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">item</span>)
+100:     <span class="ruby-identifier">content</span> = <span class="ruby-identifier">wrap_with_link</span>(<span class="ruby-identifier">content</span>, <span class="ruby-identifier">view</span>, <span class="ruby-identifier">item</span>)
+101:     <span class="ruby-identifier">content</span> = <span class="ruby-identifier">div_wrapper</span>(<span class="ruby-identifier">id</span>) { <span class="ruby-identifier">content</span> }
+102:     <span class="ruby-identifier">content</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">view</span>.<span class="ruby-identifier">link_to_function</span>(<span class="ruby-value str">&quot;Edit&quot;</span>, <span class="ruby-value str">&quot;Streamlined.Relationships.&quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+103:       <span class="ruby-node">&quot;open_relationship('#{id}', this, '/#{view.controller_path}')&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">editable</span>
+104:     <span class="ruby-identifier">content</span>
+105:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <span class="method-name">render_td_new</span><span class="method-args">(view, item)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Association.html#M000014">render_td_edit</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">render_td_show</span><span class="method-args">(view, item)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 92</span>
+92:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_td_show</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">item</span>)
+93:     <span class="ruby-identifier">view</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">show_view</span>.<span class="ruby-identifier">partial</span>, <span class="ruby-identifier">:use_full_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+94:                 <span class="ruby-identifier">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">:item</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>, <span class="ruby-identifier">:relationship</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:streamlined_def</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">show_view</span> })
+95:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">should_render_quick_add?</span><span class="method-args">(view)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 148</span>
+148:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_render_quick_add?</span>(<span class="ruby-identifier">view</span>)
+149:     <span class="ruby-identifier">quick_add</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">belongs_to?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">view</span>.<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:action</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">'quick_add'</span>
+150:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">show_view=</span><span class="method-args">(opts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 56</span>
+56:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show_view=</span>(<span class="ruby-identifier">opts</span>)
+57:     <span class="ruby-ivar">@show_view</span> = <span class="ruby-keyword kw">case</span>(<span class="ruby-identifier">opts</span>)
+58:     <span class="ruby-keyword kw">when</span>(<span class="ruby-constant">Symbol</span>)
+59:       <span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">ShowViews</span>.<span class="ruby-identifier">create_summary</span>(<span class="ruby-identifier">opts</span>)
+60:     <span class="ruby-keyword kw">when</span>(<span class="ruby-constant">Array</span>)
+61:       <span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">ShowViews</span>.<span class="ruby-identifier">create_summary</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+62:     <span class="ruby-keyword kw">when</span>(<span class="ruby-constant">Streamlined</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>)
+63:       <span class="ruby-identifier">opts</span>
+64:     <span class="ruby-keyword kw">else</span>
+65:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span>
+66:     <span class="ruby-keyword kw">end</span>
+67:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">table_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/streamlined/lib/streamlined/column/association.rb, line 31</span>
+31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_name</span>
+32:     <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">tableize</span>
+33:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

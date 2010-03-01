@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  layer_id: 1
+  column_name: MyString
+  operation: MyString
+  value: MyString
+  state: MyString
+
+two:
+  layer_id: 1
+  column_name: MyString
+  operation: MyString
+  value: MyString
+  state: MyString

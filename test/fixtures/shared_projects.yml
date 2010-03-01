@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  welcome_text: MyText
+  deploy_port: 1
+  project_id: 1
+  shared_layers_ids: MyString
+
+two:
+  title: MyString
+  welcome_text: MyText
+  deploy_port: 1
+  project_id: 1
+  shared_layers_ids: MyString

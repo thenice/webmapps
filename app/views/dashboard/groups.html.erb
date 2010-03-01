@@ -1,0 +1,27 @@
+<%= link_to "Create a new group" %>
+<% @groups.each do |group| %>
+<div class = "content_box">
+	<div class = "title">
+		<div class = "page_title">
+			<%= icon :title => :group, :size => :medium %><span class = "heading"> <%= group.name %></span>
+		</div>
+	</div>
+	<div class = "content">
+		<div class = "field_value">
+			<div class = "field">Description</div>
+			<div class = "value"><%= group.description %></div>
+		</div>
+		<div class = "field_value">
+			<div class = "field">Members</div>
+			<div class = "value">
+				<% unless group.users.nil? %>
+					<% for user in group.users %>
+						<%= user.username %> 
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		<%= link_to "Join this group" %>
+	</div>
+</div>
+<% end %>

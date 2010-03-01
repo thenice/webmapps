@@ -1,0 +1,2 @@
+module PaneHelper
+end

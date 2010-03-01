@@ -1,0 +1,26 @@
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Biography</th>
+    <th>Street Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Image</th>
+  </tr>
+  <% for user_profile in @user_profiles %>
+    <tr>
+      <td><%=h user_profile.user_id %></td>
+      <td><%=h user_profile.biography %></td>
+      <td><%=h user_profile.street_address %></td>
+      <td><%=h user_profile.city %></td>
+      <td><%=h user_profile.state %></td>
+      <td><%=h user_profile.image %></td>
+      <td><%= link_to "Show", user_profile %></td>
+      <td><%= link_to "Edit", edit_user_profile_path(user_profile) %></td>
+      <td><%= link_to "Destroy", user_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User Profile", new_user_profile_path %></p>

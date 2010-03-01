@@ -1,0 +1,4 @@
+#page << "buffers['#{@layer.id}'] = #{@shape.to_javascript};"
+@shapes.each do |shape|
+  page << "_mapView._gMap.addOverlay(#{shape.to_javascript});"
+end

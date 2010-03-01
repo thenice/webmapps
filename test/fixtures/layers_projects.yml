@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  layer_id: 1
+  project_id: 1
+
+two:
+  layer_id: 1
+  project_id: 1

@@ -1,0 +1,16 @@
+<%= error_messages_for :shapefile %>
+
+<% form_for(:shapefile, :url => {:action => 'create' }, 
+                      :html => { :multipart => true }) do |f| -%>
+  <p>
+    <label for="shpfile">.shp</label>
+    <%= f.file_field :shp_filename %>
+    <label for="shxfile">.shx</label>
+	<%= f.file_field :shx_filename %>
+	<label for="dbffile">.dbf</label>
+	<%= f.file_field :dbf_filename %>
+  </p>
+  <p>
+    <%= submit_tag 'Create' %>
+  </p>
+<% end -%>

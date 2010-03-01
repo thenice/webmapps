@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGELOG</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>CHANGELOG</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/streamlined/CHANGELOG
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Mar 17 02:54:08 +0600 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+07/16/08 - patched template query to handle HAML extensions [Matthew Bass]
+</p>
+<p>
+06/23/08 - added Sandro&#8216;s patch for help text below edit fields
+[Matthew Bass]
+</p>
+<p>
+06/16/08 - fixed partial rendering calls that had been missed during RC3
+refactoring [Matthew Bass]
+</p>
+<p>
+05/07/08 - added quick_show_button option for hiding the show button on the
+list view [Matthew Bass]
+</p>
+<p>
+1.0RC03 &#8212; 02/29/08
+</p>
+<pre>
+         - public API change: streamlined_model now called streamlined_ui
+         - added CSS IDs to each item table row on the list view (MJB)
+         - now outputting flash notices on the list view (MJB)
+         - fixed enumeration editing bugs (MJB)
+</pre>
+<p>
+1.0RC02 &#8212; 02/22/08
+</p>
+<pre>
+         - fixed show stopper bug on editing relationships (SDH)
+         - fixed html escaping bug (SDH)
+         - security check on quick add model
+         - security check on quick add model_name_method
+         - fixed bugs around STREAMLINED_SELECT_NONE
+         - fixed bug: was treating all delegate_targets as associations
+</pre>
+<p>
+1.0RC01 &#8212; 02/15/08
+</p>
+<p>
+02/15/08 - changed breadcrumb method to streamlined_breadcrumb
+</p>
+<pre>
+         - changed breadcrumb div id from breadcrumb to streamlined_breadcrumb
+         - added select component that lets you select none for has_manies
+         - fixed habtm bug #162 (thanks ErsatzTom)
+</pre>
+<p>
+01/27/08 - fixed streamlined support for Postgres
+</p>
+<p>
+01/20/08 - renamed db_action_filter to before_streamlined_create
+</p>
+<pre>
+         - renamed db_action_methods to callbacks
+</pre>
+<p>
+New Year - working on Rails 2.0.x
+</p>
+<pre>
+         - add multi_rails for different Rails version testing
+</pre>
+<p>
+12/21/07 - Moved all tests to test-spec [SDH, JNR]
+</p>
+<p>
+10/30/07 - Moved the init code setting up various path constants
+(STREAMLINED_ROOT, etc) from controller to the <a
+href="../../../../classes/Streamlined.html">Streamlined</a>:Environment
+module [Rob Sanheim]
+</p>
+<p>
+10/30/07 - update copyrights, urls, various other little cleanups [Rob
+Sanheim]
+</p>
+<p>
+10/24/07 - Merged in Luis&#8217; additional_includes declaration [Matthew
+Bass]
+</p>
+<pre>
+         - added classic_pagination so that Pagination would work out of the box with Rails 2.x
+</pre>
+<p>
+10/24/07 - Added :filterable option for ActiveRecord columns [Matthew Bass]
+</p>
+<p>
+10/19/07 - Added export form with options and column selector. Removed
+icons. [Kerry Foley and Michael Anton]
+</p>
+<pre>
+         - Added xml and stylesheet exports that match the list.  Added yaml.
+</pre>
+<p>
+10/06/07 - Linked &quot;<a
+href="../../../../classes/Streamlined.html">Streamlined</a>&quot; branding
+above top menu to the default route [Matthew Bass]
+</p>
+<p>
+10/06/07 - Applied new styling patch from ticket 114 [Matthew Bass]
+</p>
+<p>
+10/02/07 - Removed @streamlined_items_count variable from the list action
+since it&#8216;s not being used anywhere [Matthew Bass]
+</p>
+<p>
+10/01/07 - Fixed bug with incorrect partial look-up for namespaced
+controller [Jason Rudolph and Stu Halloway]
+</p>
+<p>
+09/22/07 - Added rdoc for the new ui_for syntax to the top of ui.rb (ticket
+93) [Matthew Bass]
+</p>
+<p>
+09/22/07 - Applied patch to fix next/previous page buttons (ticket 26)
+[Matthew Bass]
+</p>
+<p>
+09/22/07 - Updated streamlined:model rake task to use new ui_for syntax
+(ticket 92) [Matthew Bass]
+</p>
+<p>
+09/19/07 - Added :sort_column option for Addition columns [Matthew Bass]
+</p>
+<p>
+09/14/07 - Additional options can now be set with the pagination
+declaration [Matthew Bass]
+</p>
+<p>
+09/14/07 - Created CHANGELOG [Matthew Bass]
+</p>
+<p>
+0.9 &#8212; 9/12/2007
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

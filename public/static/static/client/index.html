@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="/static/sproutcore/en/702d7e042eec94e801ded1c7a09dabe677868b3e/detect-browser" type="text/javascript"></script>
+    
+      <link href="/static/sproutcore/en/702d7e042eec94e801ded1c7a09dabe677868b3e/stylesheet.css" rel="stylesheet" type="text/css" />
+  <link href="/static/client/en/a6596c57627d6b783cba86e3888a30483c8ce54a/stylesheet.css" rel="stylesheet" type="text/css" />
+  <link href="/css/tableorderer/tableorderer.css" rel="stylesheet" type="text/css" />
+  <link href="/css/tableorderer/screen.css." rel="stylesheet" type="text/css" />
+
+  </head>
+  <body class="sc-theme focus">  
+    <script type="text/javascript">
+    if (SC.setupBodyClassNames) SC.setupBodyClassNames() ;
+    </script>
+      
+    <!-- Main Page Body -->
+    	<!-- begin header -->
+<div id="header" class="sc-header sc-square-theme header">		<div class="left">
+			<b>Webmapps Development</b>
+		</div>
+</div>	<!-- end header -->
+	<br /><br />
+	<!-- begin main workspace-->
+<div id="workspace" class="sc-split-view horizontal default workspace">		<!-- begin ledt workspace-->
+<div class="left" style="width: 225px; top: 34px;"><div class="sc-scroll-view layer_list_scroll" style="width: 100%; height: 100%; left: 0px;">				<div class="sc-collection-view sc-source-list-view layers"></div>
+</div>			<div id="left_right_divider" class="sc-split-divider-view left_right_divider"></div>
+</div>		<!-- end left workspace-->
+		
+		<!-- begin right workspace-->
+<div id="id_1245820195" class="sc-split-divider-view id_1245820195" style="left: 225px"></div><div class="right" style="left: 230px;">			<!-- begin center workspace-->
+<div class="sc-split-view horizontal default center_workspace">				<!-- begin center_left workspace-->
+<div class="center_left" style="width: 700px;">					<!-- begin center_left workspace-->
+<div class="sc-split-view vertical default center_left_top">						<!-- begin center_left_top workspace-->
+<div id="map" class="map" style="height: 500px;">						<div id="map_data_divider" class="sc-split-divider-view map_data_divider"></div>
+</div>						<!-- end center_left_top workspace-->
+						<!-- begin center_right workspace-->
+<div id="id_1245820192" class="sc-split-divider-view id_1245820192" style="top: 500px"></div><div class="center_left_bottom" style="top: 505px;"><div class="sc-scroll-view datagrid_scroll" style="width: 100%; height: 100%;">							<div id="datagrid"></div>
+</div></div>						<!-- end center_left_bottom workspace-->
+</div>					<!-- end center workspace-->
+					<div id="center_left_center_right_divider" class="sc-split-divider-view center_left_center_right_divider"></div>
+</div>				<!-- end center_left workspace-->
+				<!-- begin center_right workspace-->
+<div id="id_1245820194" class="sc-split-divider-view id_1245820194" style="left: 700px"></div><div id="center_right" class="center_right" style="top: 50px; left: 705px;">					<div id="options" class="options"></div>
+</div>				<!-- end center_right workspace-->
+</div>			<!-- end center workspace-->
+</div>		<!-- end right workspace-->
+</div>	<!-- end main workspace-->
+	
+	<!-- begin footer -->
+<div id="footer" class="sc-footer sc-square-theme footer">  		<div class="left">
+			<div id="spinner" class="spinner spinner"><img src="/images/spinner.gif" /></div>
+  		</div>
+  		<div class="center">
+			<a id="id_1245820196" class="sc-button-view button regular normal id_1245820196"><span class="button-inner"><span class="label">Analyze</span></span></a>
+			<a id="id_1245820197" class="sc-button-view button regular normal id_1245820197"><span class="button-inner"><span class="label">DataView</span></span></a>
+			<a id="id_1245820198" class="sc-button-view button regular normal id_1245820198"><span class="button-inner"><span class="label">Share</span></span></a>
+			<a id="id_1245820199" class="sc-button-view button regular normal id_1245820199"><span class="button-inner"><span class="label">Import</span></span></a>
+  		</div>
+  		<div class="right">
+  		</div>
+</div>	<!-- end footer -->
+
+
+    <!-- Resources to be removed from DOM on page load -->
+    <div id="resources" style="display:none; visibility: hidden;">
+      <div id="analyze" class="analyze"><form method="post" action="/server/analyze/" id="analyze_form" class="form analyze_form">	<h1>Analyze Layers</h1><br />
+	<input type="text" class="id_1245820180" /> <br /><br />
+	<input type="text" class="id_1245820181" /><br /><br />
+	<select class="source_layer"></select>
+	<br /><br />
+	<select class="compare_method"></select>
+	<br /><br />
+	<select class="compare_layer"></select>
+	<br /><br />
+	<a title="Add Condition" id="id_1245820182" class="sc-button-view button regular normal id_1245820182"><span class="button-inner"><span class="label">Add Condition</span></span></a>
+	<br /><br />
+	<ul id = "conditions_list">
+	</ul>
+	<a title="Analyze" id="id_1245820183" class="sc-button-view button regular normal id_1245820183"><span class="button-inner"><span class="label">Analyze</span></span></a>
+	
+</form></div><div id="shapefile_import_tab" class="shapefile_import_tab">	<div id="shapefile_import_container" class="shapefile_import_container"></div>
+</div><div id="layer_details" class="layer_details">
+	<input name="source" type="text" id="id_1245820184" class="id_1245820184" /><br /><br />	
+	<input type="text" id="id_1245820185" class="id_1245820185" /><br /><br />	
+	<textarea rows="10" cols="72" class="id_1245820186"></textarea><br /><br />
+	<div class="sc-slider-view id_1245820187"><span class="outer"><span  class="inner"></span><img src="/static/sproutcore/en/702d7e042eec94e801ded1c7a09dabe677868b3e/blank.gif" class="sc-handle" /></span></div><br /><br />
+	<input type="text" class="id_1245820188" /><br /><br />
+	<input type="text" class="id_1245820189" /><br /><br />
+	<input type="text" class="id_1245820190" /><br /><br />
+	<input type="text" class="id_1245820191" /><br /><br />
+	<a title="Submit Metadata" id="layer_detail_submit" class="sc-button-view button regular normal layer_detail_submit"><span class="button-inner"><span class="label">Submit Metadata</span></span></a>
+
+</div><div id="import_panel" class="import_panel" style="width: 500px;"><h1>Import a Layer</h1>
+<div id="import_container" class="import_container"></div>
+<div class="buttons">
+  <a title="Close" id="id_1245820200" class="sc-button-view button regular normal id_1245820200"><span class="button-inner"><span style="width: 60px;" class="label">Close</span></span></a>
+</div>
+</div><div id="shapefile_upload" class="shapefile_upload"><form id="shapefile_upload_form" action="server/layers/import_shapefile" enctype="multipart/form-data" method="post" target="upload_frame">
+	<ul class = "file_upload_list">
+		<li><label for="shp">.shp</label> <input id="shp_file" name="shp_file" type="file" /></li>
+		<li><label for="dbf">.dbf</label> <input id="dbf_file" name="dbf_file" type="file" /></li>
+		<li><label for="shx">.shx</label> <input id="shx_file" name="shx_file" type="file" /></li>
+	</ul>
+	<a title="Upload Shapefile" id="shapefile_upload_button" class="sc-button-view button regular normal shapefile_upload_button"><span class="button-inner"><span class="label">Upload Shapefile</span></span></a>
+</form>
+<iframe id="upload_frame" name="upload_frame" style="display: none"></iframe>
+</div><div id="csv_file_upload_tab" class="csv_file_upload_tab">	<form id="csv_file_upload_form" action="server/layers/import_shapefile" enctype="multipart/form-data" method="post" target="upload_frame">
+		<ul class = "file_upload_list">
+			<li><label for="csv">.csv</label> <input id="shp_file" name="shp_file" type="file" /></li>
+		</ul>
+		<a title="Upload CSV File" id="csv_upload_button" class="sc-button-view button regular normal csv_upload_button"><span class="button-inner"><span class="label">Upload CSV File</span></span></a>
+	</form>
+	<iframe id="upload_frame" name="upload_frame" style="display: none"></iframe>
+</div>#!/usr/bin/env python
+# encoding: utf-8
+"""
+column_select.py
+
+Created by Daniel Cohen on 2009-05-18.
+Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+"""
+
+import sys
+import getopt
+
+
+help_message = '''
+The help message goes here.
+'''
+
+
+class Usage(Exception):
+	def __init__(self, msg):
+		self.msg = msg
+
+
+def main(argv=None):
+	if argv is None:
+		argv = sys.argv
+	try:
+		try:
+			opts, args = getopt.getopt(argv[1:], "ho:v", ["help", "output="])
+		except getopt.error, msg:
+			raise Usage(msg)
+	
+		# option processing
+		for option, value in opts:
+			if option == "-v":
+				verbose = True
+			if option in ("-h", "--help"):
+				raise Usage(help_message)
+			if option in ("-o", "--output"):
+				output = value
+	
+	except Usage, err:
+		print >> sys.stderr, sys.argv[0].split("/")[-1] + ": " + str(err.msg)
+		print >> sys.stderr, "\t for help use --help"
+		return 2
+
+
+if __name__ == "__main__":
+	sys.exit(main())
+    </div>
+
+    <!-- Include Site Javascript -->
+      <script type="text/javascript" src="/static/prototype/en/40391a1b3ce0172bc401bffd2d9175fc094d8964/javascript.js"></script>
+  <script type="text/javascript" src="/static/sproutcore/en/702d7e042eec94e801ded1c7a09dabe677868b3e/javascript.js"></script>
+  <script type="text/javascript" src="/static/client/en/a6596c57627d6b783cba86e3888a30483c8ce54a/javascript.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA&amp;hl="></script>
+  <script type="text/javascript" src="javascripts/ym4r-gm.js"></script>
+  <script type="text/javascript" src="javascripts/load_map.js"></script>
+  <script type="text/javascript" src="javascripts/TableOrderer.js"></script>
+<script type="text/javascript">String.preferredLanguage = "en";</script>
+
+
+<!-- Render Page Views -->
+<script type="text/javascript">
+SC.page = SC.Page.create({
+  analyze: SC.View.extend({
+    outlets: ["analyzeForm"],
+    
+    analyzeForm: SC.FormView.extend({
+      outlets: ["newLayerNameField","phoneNumberField","sourceLayer","compareMethod","compareLayer","id1245820182","id1245820183"],
+      
+      newLayerNameField: SC.TextFieldView.extend({
+        valueBinding: "Client.analyzeController.newLayerName",
+        
+        hint: "New Layer Name",
+        fieldKey: "newLayerName"
+      }).outletFor(".id_1245820180?"),
+      
+      phoneNumberField: SC.TextFieldView.extend({
+        valueBinding: "Client.analyzeController.newLayerTableName",
+        
+        hint: "layer_new_table_name",
+        fieldKey: "phoneNumber"
+      }).outletFor(".id_1245820181?"),
+      
+      sourceLayer: SC.SelectFieldView.extend({
+        valueBinding: "Client.analyzeController.sourceLayer",
+        objectsBinding: "Client.layerMasterController.content",
+        
+        nameKey: "name",
+        valueKey: "guid"
+      }).outletFor(".source_layer?"),
+      
+      compareMethod: SC.SelectFieldView.extend({
+        valueBinding: "Client.analyzeController.compareMethod",
+        objectsBinding: "Client.analyzeController.availableCompareMethods"
+      }).outletFor(".compare_method?"),
+      
+      compareLayer: SC.SelectFieldView.extend({
+        valueBinding: "Client.analyzeController.compareLayer",
+        objectsBinding: "Client.layerMasterController.content",
+        
+        nameKey: "name",
+        valueKey: "guid"
+      }).outletFor(".compare_layer?"),
+      
+      id1245820182: SC.ButtonView.extend({
+        action: "Client.analyzeController.addCondition"
+      }).outletFor(".id_1245820182?"),
+      
+      id1245820183: SC.ButtonView.extend({
+        action: "Client.analyzeController.performAnalysis"
+      }).outletFor(".id_1245820183?")
+    }).outletFor(".analyze_form?"),
+    
+    isVisibleBinding: "Client.applicationController.analyzeIsVisible"
+  }).outletFor("#analyze") ,
+
+  shapefileImportTab: SC.View.extend({
+    outlets: ["shapefileImportContainer"],
+    
+    shapefileImportContainer: SC.ContainerView.extend({
+      contentBinding: "Client.importController.currentShapeFilePanel"
+    }).outletFor(".shapefile_import_container?")
+  }).outletFor("#shapefile_import_tab") ,
+
+  layerDetails: SC.View.extend({
+    outlets: ["id1245820184","id1245820185","descriptionField","reliabilityRatingField","sourceField","externalUrlField","collectedByField","dateCollectedField","layerDetailSubmit"],
+    
+    id1245820184: SC.TextFieldView.extend({
+      hint: "Give a descriptive title to the layer"
+    }).outletFor(".id_1245820184?"),
+    
+    id1245820185: SC.TextFieldView.extend({
+      hint: "A short name to appear in the layer panel."
+    }).outletFor(".id_1245820185?"),
+    
+    descriptionField: SC.TextareaFieldView.extend({
+      hint: "Description of layer",
+      fieldKey: "description"
+    }).outletFor(".id_1245820186?"),
+    
+    reliabilityRatingField: SC.SliderView.extend({
+      fieldKey: "reliabilityRating"
+    }).outletFor(".id_1245820187?"),
+    
+    sourceField: SC.TextFieldView.extend({
+      hint: "source of layer",
+      fieldKey: "source"
+    }).outletFor(".id_1245820188?"),
+    
+    externalUrlField: SC.TextFieldView.extend({
+      hint: "external link for layer",
+      fieldKey: "externalUrl"
+    }).outletFor(".id_1245820189?"),
+    
+    collectedByField: SC.TextFieldView.extend({
+      hint: "who collected the date for the layer",
+      fieldKey: "collectedBy"
+    }).outletFor(".id_1245820190?"),
+    
+    dateCollectedField: SC.TextFieldView.extend({
+      hint: "when was it collected",
+      fieldKey: "dateCollected"
+    }).outletFor(".id_1245820191?"),
+    
+    layerDetailSubmit: SC.ButtonView.extend({
+      isDefault: false,
+      action: "Client.importController.layer_details_submit"
+    }).outletFor(".layer_detail_submit?")
+  }).outletFor("#layer_details") ,
+
+  header: SC.View.extend({
+    
+  }).outletFor("#header") ,
+
+  workspace: SC.SplitView.extend({
+    outlets: ["left","id1245820195","right"],
+    
+    left: SC.View.extend({
+      outlets: ["layerListScroll","leftRightDivider"],
+      
+      layerListScroll: SC.ScrollView.extend({
+        outlets: ["layers"],
+        
+        layers: SC.SourceListView.extend({
+          contentBinding: "Client.layerMasterController.arrangedObjects",
+          selectionBinding: "Client.layerMasterController.selection",
+          
+          contentValueKey: "name",
+          hasContentBranch: false,
+          canReorderContent: true,
+          groupBy: ['listingType'],
+          groupVisibleKey: true,
+          contentIconKey: "icon",
+          contentValueIsEditable: true,
+          acceptsFirstResponder: true,
+          delegate: Client.layerMasterController,
+          hasContentIcon: true
+        }).outletFor(".layers?")
+      }).outletFor(".layer_list_scroll?"),
+      
+      leftRightDivider: SC.SplitDividerView.extend({
+        
+      }).outletFor(".left_right_divider?")
+    }).outletFor(".left?"),
+    
+    id1245820195: SC.SplitDividerView.extend({
+      
+    }).outletFor(".id_1245820195?"),
+    
+    right: SC.View.extend({
+      outlets: ["centerWorkspace"],
+      
+      centerWorkspace: SC.SplitView.extend({
+        outlets: ["centerLeft","id1245820194","centerRight"],
+        
+        centerLeft: SC.View.extend({
+          outlets: ["centerLeftTop","centerLeftCenterRightDivider"],
+          
+          centerLeftTop: SC.SplitView.extend({
+            outlets: ["map","id1245820192","centerLeftBottom"],
+            
+            map: SC.View.extend({
+              outlets: ["mapDataDivider"],
+              
+              mapDataDivider: SC.SplitDividerView.extend({
+                
+              }).outletFor(".map_data_divider?")
+            }).outletFor(".map?"),
+            
+            id1245820192: SC.SplitDividerView.extend({
+              
+            }).outletFor(".id_1245820192?"),
+            
+            centerLeftBottom: SC.View.extend({
+              outlets: ["datagridScroll"],
+              
+              datagridScroll: SC.ScrollView.extend({
+                
+              }).outletFor(".datagrid_scroll?")
+            }).outletFor(".center_left_bottom?"),
+            
+            layoutDirection: "vertical"
+          }).outletFor(".center_left_top?"),
+          
+          centerLeftCenterRightDivider: SC.SplitDividerView.extend({
+            
+          }).outletFor(".center_left_center_right_divider?")
+        }).outletFor(".center_left?"),
+        
+        id1245820194: SC.SplitDividerView.extend({
+          
+        }).outletFor(".id_1245820194?"),
+        
+        centerRight: SC.View.extend({
+          outlets: ["options"],
+          
+          options: SC.ContainerView.extend({
+            contentBinding: "Client.applicationController.rightView"
+          }).outletFor(".options?")
+        }).outletFor(".center_right?"),
+        
+        layoutDirection: "horizontal"
+      }).outletFor(".center_workspace?")
+    }).outletFor(".right?"),
+    
+    layoutDirection: "horizontal"
+  }).outletFor("#workspace") ,
+
+  footer: SC.View.extend({
+    outlets: ["spinner","id1245820196","id1245820197","id1245820198","id1245820199"],
+    
+    spinner: SC.SpinnerView.extend({
+      
+    }).outletFor(".spinner?"),
+    
+    id1245820196: SC.ButtonView.extend({
+      action: "Client.applicationController.showAnalyzePane"
+    }).outletFor(".id_1245820196?"),
+    
+    id1245820197: SC.ButtonView.extend({
+      action: "Client.applicationController.showDataView"
+    }).outletFor(".id_1245820197?"),
+    
+    id1245820198: SC.ButtonView.extend({
+      action: "Client.applicationController.showSharePane"
+    }).outletFor(".id_1245820198?"),
+    
+    id1245820199: SC.ButtonView.extend({
+      action: "Client.importController.showPanel"
+    }).outletFor(".id_1245820199?")
+  }).outletFor("#footer") ,
+
+  importPanel: SC.View.extend({
+    outlets: ["importContainer","id1245820200"],
+    
+    importContainer: SC.ContainerView.extend({
+      contentBinding: "Client.importController.currentPanel"
+    }).outletFor(".import_container?"),
+    
+    id1245820200: SC.ButtonView.extend({
+      isDefault: true,
+      action: "Client.importController.hidePanel"
+    }).outletFor(".id_1245820200?"),
+    
+    paneType: "panel"
+  }).outletFor("#import_panel") ,
+
+  shapefileUpload: SC.View.extend({
+    outlets: ["shapefileUploadButton"],
+    
+    shapefileUploadButton: SC.ButtonView.extend({
+      isDefault: false,
+      action: "Client.importController.submitShapefileUpload"
+    }).outletFor(".shapefile_upload_button?")
+  }).outletFor("#shapefile_upload") ,
+
+  csvFileUploadTab: SC.View.extend({
+    outlets: ["csvUploadButton"],
+    
+    csvUploadButton: SC.ButtonView.extend({
+      isDefault: false,
+      action: "Client.importController.submitCSVUpload"
+    }).outletFor(".csv_upload_button?")
+  }).outletFor("#csv_file_upload_tab") 
+}); 
+</script>
+
+    <!-- Start SproutCore on Page Load -->
+    <script type="text/javascript">window.onload = SC.didLoad;</script>
+
+	</body>
+</html>

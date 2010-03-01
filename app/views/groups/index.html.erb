@@ -1,0 +1,8 @@
+<ul>
+	<% @groups.each do |group| %>
+		<li>
+			<h1><%= icon :title => :groups, :size => :medium %> <%= group.name %></h1>
+			<%= group.description %>	
+		</li>
+	<% end %>
+</ul>

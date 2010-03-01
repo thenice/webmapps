@@ -1,0 +1,3 @@
+page['loading'].show();
+page << @map.clear_overlays
+page['loading'].hide();

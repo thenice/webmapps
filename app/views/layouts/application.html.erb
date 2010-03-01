@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<link href="/stylesheets/common.css" rel="stylesheet" type="text/css" />
+		<title>webmapps</title>
+		<%= javascript_include_tag :defaults %>
+	</head>
+	<body>
+		<div id = "pane" style = "display: none;">
+			<div id = "header">Edit Project Details</div>
+			<div id = "content">
+				this is a test
+			</div>
+		</div>
+		<div id = "top">
+			<div id = "tabs">
+				<ul>
+					<%= dashboard_tabs(action_name)%>
+				</ul>
+			</div>
+			<div id = "logo">
+				<%= image_tag 'logo.png' %>
+			</div>
+			<div id = "right">
+				<%= render :partial => 'top/menu' if current_user %>
+			</div>
+		</div>
+		<table id = "main_panel" cellpadding="0" cellspacing="0">
+			<tr>
+				<td id = "left">
+					<div id = "messages">
+						<%= render :partial => 'flash/error' unless flash[:error].blank? %>
+						<%= render :partial => 'flash/message' unless flash[:message].blank? %>
+						<%= render :partial => 'flash/notice' unless flash[:notice].blank? %>
+					</div>
+					<div id = "header"><b><%= @title || "Here's your stuff." %></b></div>
+					<div id = "page_content">
+						<%= yield %>
+					</div>
+				</td>
+				<td id = "shadow"></td>
+				<td id = "right"></td>
+			</tr>
+			<tr>
+				<td id = "bottom_shadow"> </td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<div style ="text-align:center">
+						<b><%= current_user.username + ": last request @ " + (current_user.last_request_at).localtime.to_s + " from " + current_user.current_login_ip unless current_user.blank? %></b>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</body>
+</html>

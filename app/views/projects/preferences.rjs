@@ -1,0 +1,2 @@
+page.replace_html 'pane', :partial => 'projects/tab_edit', :locals => { :project => @project }
+page['pane'].appear :duration => 1.0

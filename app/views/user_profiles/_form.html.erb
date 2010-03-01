@@ -1,0 +1,20 @@
+<% form_for @user_profile, :html => {:action => :update } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :biography %><br />
+    <%= f.text_area :biography, :class => "big__multi_line_input" %>
+  </p>
+  <p>
+    <%= f.label :street_address %><br />
+    <%= f.text_field :street_address, :class => "big_one_line_input" %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city, :class => "big_one_line_input" %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state, :class => "big_one_line_input" %>
+  </p>
+  <p><%= f.submit "Save" %></p>
+<% end %>

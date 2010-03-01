@@ -1,0 +1,25 @@
+<div class = "content_box">
+	<div class = "title">
+		<div class = "page_title">
+			<span class = "heading"><%= current_user.username %>'s Profile</span> 
+			<%= link_to "Edit", :action => 'edit' %></div>
+		</div>
+	<div class = "content">
+		<div class = "field_value">
+			<div class = "field">Biography</div>
+			<div class = "value"><%=h @user_profile.biography %></div>
+		</div>
+		<div class = "field_value">
+			<div class = "field">Street Address</div>
+			<div class = "value"><%=h @user_profile.street_address %></div>
+		</div>
+		<div class = "field_value">
+			<div class = "field">City</div>
+			<div class = "value"><%=h @user_profile.city %></div>
+		</div>
+		<div class = "field_value">
+			<div class = "field">State</div>
+			<div class = "value"> <%=h @user_profile.state %></div>
+		</div>
+	</div
+</div>

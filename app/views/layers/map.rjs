@@ -1,0 +1,13 @@
+page << "activeLayers['#{@layer.id}'] = [];"
+@features.each_with_index do |feature,i|
+  page << "shape = #{feature.google_shape.to_javascript}"
+  page << "feature_hash = {}"
+  page << "feature_hash.shape = shape"
+  page << "feature_hash.id = #{feature.id}"
+  page << "activeLayers['#{@layer.id}'].push( feature_hash   )"
+  page << "_mapView._gMap.addOverlay(activeLayers['#{@layer.id}'][#{i}]['shape']);"
+  page << "GEvent.addListener(activeLayers['#{@layer.id}'][#{i}]['shape'], 'click', function () {
+    alert('testing 123');
+  })"
+end
+page << @map.panTo(@center)

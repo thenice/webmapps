@@ -1,0 +1,15 @@
+<%= icon :title => :new_file, :size => :medium %> 
+<span class = "header">Import Layer</span>
+<div class = "instructions">
+	Welcome to the Webamapps Layer Importer. We will walk you through a series of steps in order to help you bring your data in to Webmapps.
+</div>
+<div id = 'input'>
+	<strong>Title</strong>
+	<% form_for @import do |f| %>
+		<%= f.text_field :title, :class => 'big_one_line_input' %><br /><br />
+		<strong>Format</strong><br />
+ 		<%= f.select(:file_format, ['Shapefile', 'CSV File']) %><br /><br />
+		<%= f.hidden_field :project_id, :value => @project.id %>
+		<%= f.submit 'Get Started' %>
+	<% end %>
+</div>

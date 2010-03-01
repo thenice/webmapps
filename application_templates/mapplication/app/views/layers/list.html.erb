@@ -1,0 +1,14 @@
+<%= @map.to_html %>
+<div style = "float: right; width: 60%">
+	<%= @map.div(:width => '100%', :height => 650 ) %>
+</div>
+<div style = "float: left; width: 35%; height: 600ox; padding: 10px; background-color: white; line-height: 1.4em;">
+	<div class = "map_listing">
+		<div class = "header">Listing: Rhode Island Lakes <%= link_to "previous", :action => 'list', :page => @page.to_i-1 %> | <%= link_to "next", :action => 'list', :page => @page.to_i+1 %></div>
+		<ul>
+			<% @features.each do |feature| %>
+				<li><strong><%= link_to feature.attributes.first[0], :action => 'show', :feature_id => feature.id, :layer_id => @layer_id %></strong></li>
+			<% end %>
+		</ul>
+	</div>
+</div>

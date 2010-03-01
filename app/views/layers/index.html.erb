@@ -1,0 +1,23 @@
+<%= link_to "Import a layer", import_layer_url(@project.id), :action => 'new' %>
+<% for layer in @project.layers do %>
+	<div class = "content_box">
+		<div class = "title">
+			<div class = "header">
+				<%= icon :name => 'Layers.png', :size => :medium, :type => 'GIS', :gis => true %> <%= layer.name %> <%= link_to "edit", edit_project_url %>
+			</div>
+		<div class = "content">
+			<div class = "field_value">
+				<div class = "field">Features</div>
+				<div class = "value">
+					<%= layer.classify.column_names.join(', ') %>
+				</div>
+			</div>
+			<div class = "field_value">
+				<div class = "field">Features in layer</div>
+				<div class = "value">
+					<%= layer.classify.count %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>

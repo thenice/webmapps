@@ -1,0 +1,11 @@
+xml.rss(:version => "2.0", "xmlns:georss" => GEORSS_NS) do
+    xml.channel do
+      xml.name @layer.name 
+      xml.layer_id @layer.id
+      @features.each do |feature|
+      xml.item do
+        xml << feature.send(@layer.geometric_column_name).as_georss
+      end
+    end
+  end
+end

@@ -1,0 +1,27 @@
+<h1>New filter</h1>
+
+<% form_for(@filter) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :layer_id %><br />
+    <%= f.text_field :layer_id %>
+  </p>
+  <p>
+    <%= f.label :field_name %><br />
+    <%= f.text_field :field_name %>
+  </p>
+  <p>
+    <%= f.label :operation %><br />
+    <%= f.text_field :operation %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', filters_path %>

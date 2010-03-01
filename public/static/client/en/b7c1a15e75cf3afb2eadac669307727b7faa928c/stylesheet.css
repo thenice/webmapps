@@ -1,0 +1,121 @@
+/* Start ----------------------------------------------------- import_picker.css*/
+
+/* @override
+ http://localhost:4020/static/layers/en/_cache/picker-1210212824.css
+*/
+
+.import_picker {
+	width: 650px;
+}
+
+.import_picker .contents {
+ position: relative;
+ height: 500px;
+}
+
+.import_picker .contents .header {
+	height: 20px;
+	line-height: 20px;
+	
+}
+
+	.import_picker .contents .header .left {
+		float: left;
+	}
+	
+	.import_picker .contents .header .right {
+		float: right;
+	}
+
+.import_picker .contents label {
+ position: absolute ;
+ width: 70px;
+ top: 0;
+ line-height: 24px ;
+ text-align: right ;
+}
+
+.import_picker .contents .value {
+ position: absolute ;
+ display:  block;
+ left: 78px;
+ right: 0;
+}
+
+.import_picker .contents .value input {
+ position: absolute ;
+ left: 0;
+ width: 185px;
+}
+
+.import_picker .contents .value .sc-slider-view {
+ position: relative;
+ top: 4px;
+}
+
+.import_picker .buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-top: 4px;
+
+
+}
+
+
+/* End ------------------------------------------------------- import_picker.css*/
+
+/* Start ----------------------------------------------------- body.css*/
+
+body {
+ position: absolute ;
+ left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ padding: 0;
+ margin: 0;
+ overflow: hidden ;
+}
+
+.workspace .left {
+ position: absolute;
+ left:  0;
+ top:  0;
+ width: 200px;
+ bottom: 0;
+}
+
+.workspace .left .layer_list {
+	height: 800px;
+}
+
+.right_pane {
+	padding: 20px;
+}	
+
+.center_left_bottom {
+	height: 250;
+}
+
+.progress {
+  width: 100px;
+  height: 10px;
+  border: thin solid #AAAAAA;
+}
+
+.progress .inner {
+  width: 0px;
+  height: 10px;
+  background-color: black;
+ }
+
+.datagrid_scroll {
+	overflow:scroll;
+}
+
+
+
+
+/* End ------------------------------------------------------- body.css*/
+

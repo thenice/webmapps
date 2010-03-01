@@ -1,0 +1,17 @@
+development:
+    adapter: postgresql
+    database: webmapps
+    username: 
+    password: 
+        
+test:
+    adapter: postgresql
+    database: webmapps_test
+    username: dcohen
+    password:
+
+production:
+    adapter: postgresql
+    database: webmapps
+    username: 
+    password:

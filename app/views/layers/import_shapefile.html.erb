@@ -1,0 +1,7 @@
+<% form_tag '/layers/import_shapefile',  { :multipart => true } do %>
+    <label for="shp">Layer Short Name</label> <%= text_field_tag "table_name" %><br />
+    <label for="shp">.shp</label> <%= file_field_tag "shp_file" %><br />
+	<label for="dbf">.dbf</label> <%= file_field_tag "dbf_file" %><br />
+	<label for="shx">.shx</label> <%= file_field_tag "shx_file" %><br /><br />
+    <%= submit_tag %>
+<% end %>

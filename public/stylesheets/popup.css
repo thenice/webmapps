@@ -1,0 +1,89 @@
+body {
+	font-size: 10px;
+	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+	color: #222;
+	background: url('../images/page_background.png');
+}
+
+.header {
+	position: relative;
+	font-size: 1.5em;
+	font-weight: bold;
+	bottom: 10px;
+	width: 100%;
+}
+
+#input {
+	padding-left: 20px;
+}
+
+#input ul {
+}
+
+#input li {
+	list-style-type: none;
+	width: 250px;
+}
+
+#listed_items {
+	
+}
+
+#listed_items ul {
+	
+}
+
+#listed_items li {
+	list-style-type: none;
+}
+
+.instructions {
+	letter-spacing: 1px;
+	padding: 20px;
+	line-height: 15px;
+	font-size: 1.1em;
+}
+
+#top #top_content {
+	line-height: 75px;
+	font-weight: bold;
+	color: #ffffff;
+	font-size: 1.5em;
+}
+
+
+.big__multi_line_input {	
+	font-size: 1.4em;
+	line-height: 1.5em;
+	font-weight: bold;
+	width: 60%;
+	height: 100px;
+
+}
+
+.big_one_line_input {
+	font-size: 1.4em;
+	line-height: 1.5em;
+	font-weight: bold;
+	width: 60%;
+	height: 1.4em;
+}
+
+input:focus {	
+	background-color: #fffdea;
+}
+
+input {
+	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+	border: 1px silver solid;
+
+}
+
+textarea:focus {	
+	background-color: #fffdea;
+}
+
+textarea {
+	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+	border: 1px silver solid;
+}

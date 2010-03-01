@@ -1,0 +1,65 @@
+/* Start ----------------------------------------------------- body.css*/
+
+body {
+ position: absolute ;
+ left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ padding: 0;
+ margin: 0;
+ overflow: hidden ;
+}
+
+.header {
+}
+
+.footer {
+	height: 35px;
+}
+.workspace {
+	padding-bottom: 40px;
+	padding-top: 40px;
+}
+
+.workspace .left {
+ position: absolute;
+ left:  0;
+ top:  0;
+ width: 200px;
+ bottom: 0;
+}
+
+.workspace .left .layer_list {
+	height: 800px;
+}
+
+.right_pane {
+	padding: 20px;
+}	
+
+.center_left_bottom {
+	height: 250;
+}
+
+.progress {
+  width: 100px;
+  height: 10px;
+  border: thin solid #AAAAAA;
+}
+
+.progress .inner {
+  width: 0px;
+  height: 10px;
+  background-color: black;
+ }
+
+.datagrid_scroll {
+	overflow:scroll;
+}
+
+
+
+
+/* End ------------------------------------------------------- body.css*/
+

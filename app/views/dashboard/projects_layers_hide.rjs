@@ -1,0 +1,3 @@
+page[@div].blind_up :duration => 0.25 
+page[@show].show
+page[@hide].hide

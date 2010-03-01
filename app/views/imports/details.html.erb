@@ -1,0 +1,15 @@
+<%= icon :title => :new_file, :size => :medium %> 
+<span class = "header">Layer Details</span>
+<div class = "instructions">
+	Please enter in as many layer details as possible. This will help you find and sort your content later.
+</div>
+<div id = 'input'>
+	<% form_for :import, @import, :url => { :action => "save_details" } do |f| %>
+		<strong>Short Name</strong><br />
+		<%= f.text_field :short_name %><br /><br />
+		<strong>Source</strong><br /> <%= f.text_field :source %><br /><br />
+		<strong>External URL</strong><br /><%= f.text_field :external_url %><br /><br />
+ 		<strong>Reliability</strong><br /> <%= f.select(:reliability, ['1', '2', '3', '4', '5']) %><br /><br />
+		<%= f.submit 'Continue' %>
+	<% end %>
+</div>

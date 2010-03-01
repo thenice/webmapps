@@ -1,0 +1,43 @@
+<p>
+  <b>Buffer size:</b>
+  <%=h @layer_setting.buffer_size %>
+</p>
+
+<p>
+  <b>Buffer fill color:</b>
+  <%=h @layer_setting.buffer_fill_color %>
+</p>
+
+<p>
+  <b>Buffer stroke color:</b>
+  <%=h @layer_setting.buffer_stroke_color %>
+</p>
+
+<p>
+  <b>Fill color:</b>
+  <%=h @layer_setting.fill_color %>
+</p>
+
+<p>
+  <b>Stroke color:</b>
+  <%=h @layer_setting.stroke_color %>
+</p>
+
+<p>
+  <b>Stroke weight:</b>
+  <%=h @layer_setting.stroke_weight %>
+</p>
+
+<p>
+  <b>Opacity:</b>
+  <%=h @layer_setting.opacity %>
+</p>
+
+<p>
+  <b>Layer:</b>
+  <%=h @layer_setting.layer_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_layer_setting_path(@layer_setting) %> |
+<%= link_to 'Back', layer_settings_path %>

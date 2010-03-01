@@ -1,0 +1,3 @@
+page << "selectedFeature = #{@shape.to_javascript};"
+page << "_mapView._gMap.addOverlay(selectedFeature);"
+page << "_mapView._gMap.panTo(#{@center.to_javascript});"

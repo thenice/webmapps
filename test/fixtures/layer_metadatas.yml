@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  layer_id: 1
+  description: MyText
+  revision_number: 1
+  reliability_rating: 1
+  source: MyString
+  external_url: MyString
+  collected_by: MyText
+
+two:
+  layer_id: 1
+  description: MyText
+  revision_number: 1
+  reliability_rating: 1
+  source: MyString
+  external_url: MyString
+  collected_by: MyText

@@ -1,0 +1,22 @@
+<div id = "header">Editing <%= project.title %>
+</div>
+
+<%= render :partial => 'pane_tabs', :locals => { :project => project, :selected => :tab_sharing } %>
+
+<div id = "content">
+		<ul class = "drag_drop_list_box" id = "drag">
+			<li>Annalise</li>
+			<li>Danny</li>
+			<li>Fred</li>
+			<li>John</li>
+			<li>Bob</li>
+		</ul>	
+		
+		<ul class = "drag_drop_list_box" id = "drop">
+			<li>Annalise</li>
+			<li>Danny</li>
+			<li>Fred</li>
+			<li>John</li>
+			<li>Bob</li>
+		</ul>
+</div>

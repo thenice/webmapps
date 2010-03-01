@@ -1,0 +1,26 @@
+<%= link_to "Create a new project", new_project_url %>
+<div class = "content_box">
+	<div class = "title">
+		<div class = "page_title">
+			<span class = "heading">My projects</span>
+		</div>
+	</div>
+	<div class = "content">
+		<ul id = "my_project_list" class = "project_list">
+			<%= render :partial => 'project', :collection => @my_projects %>
+		</ul>
+	</div>
+</div>
+
+<div class = "content_box">
+	<div class = "title">
+		<div class = "page_title">
+			<span class = "heading">Projects being shared with me</span>
+		</div>
+	</div>
+	<div class = "content">
+		<ul id = "my_project_list" class = "project_list">
+			<%= render :partial => 'project', :collection => @shared_projects %>
+		</ul>
+	</div>
+</div>

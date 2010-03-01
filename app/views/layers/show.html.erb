@@ -1,0 +1,11 @@
+
+<p>
+  <strong>Name:</strong>
+  <%=h @layers.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_layers_path(@layers) %> |
+  <%= link_to "Destroy", @layers, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", layers_path %>
+</p>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/spatial_adapter/README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Mar 17 02:54:08 +0600 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Spatial Adapter for Rails</h1>
+<p>
+This is the Spatial Adapter for Rails 0.1.1. It is a plugin for Rails which
+manages the MySql Spatial and PostGIS geometric columns in a transparent
+way (that is like the other base data type columns). It also provides a way
+to manage these columns in migrations. It replaces both the &quot;PostGIS
+Adapter for Rails&quot; and &quot;MySql Spatial Adapter for Rails&quot;
+plugins.
+</p>
+<h3>Dependencies</h3>
+<p>
+You need to install a version &gt;= 0.1.1 of the GeoRuby gem (<a
+href="http://rubyforge.org/projects/georuby">rubyforge.org/projects/georuby</a>/)
+:
+</p>
+<pre>
+        gem install georuby
+</pre>
+<h3>Installation</h3>
+<p>
+At the root of your Rails project, type :
+</p>
+<pre>
+       script\plugin install svn://rubyforge.org/var/svn/georuby/SpatialAdapter/trunk/spatial_adapter
+</pre>
+<p>
+You need to have SVN installed.
+</p>
+<h3>Operations</h3>
+<p>
+Geometric columns in your <a
+href="../../../../classes/ActiveRecord.html">ActiveRecord</a> models now
+appear just like any other column of other basic data types. They can also
+be dumped in ruby schema mode and loaded in migrations the same way as
+columns of basic types.
+</p>
+<h4>Migrations</h4>
+<p>
+Here is an example of code for the creation of a table with a geometric
+column in PostGIS, along with the addition of a spatial index on the column
+:
+</p>
+<pre>
+        ActiveRecord::Schema.define do
+          create_table &quot;table_points&quot;, :force =&gt; true do |t|
+            t.column &quot;data&quot;, :string
+            t.column &quot;geom&quot;, :point, :null=&gt;false, :srid =&gt; 123, :with_z =&gt; true
+          end
+
+          add_index &quot;table_points&quot;, &quot;geom&quot;, :spatial=&gt;true
+        end
+</pre>
+<p>
+Here is a related statement valid for MySql version &lt;= 5.0.16 :
+</p>
+<pre>
+        ActiveRecord::Schema.define do
+          create_table &quot;table_points&quot;, ;options=&gt;&quot;ENGINE=MyISAM&quot;, :force =&gt; true do |t|
+            t.column &quot;data&quot;, :string
+            t.column &quot;geom&quot;, :point, :null=&gt;false
+          end
+
+          add_index &quot;table_points&quot;, &quot;geom&quot;, :spatial=&gt;true
+        end
+</pre>
+<p>
+The differences with the PostGIS version are because of the following
+reasons :
+</p>
+<ul>
+<li>On all version of MySql, the :srid and :with_z would be ignored, since they
+are not supported.
+
+</li>
+<li>On MySql versions &lt;= 5.0.16, you have to add <tt>:options =&gt;
+&quot;ENGINE=MyISAM&quot;</tt> to the create_table statetement, since only
+MyISAM tables can have geometric columns.
+
+</li>
+</ul>
+<h4>Model</h4>
+<p>
+Here is the model you would use, in both MySql and PostGIS:
+</p>
+<pre>
+        class TablePoint &lt; ActiveRecord::Base
+        end
+</pre>
+<p>
+That was easy! As you see, there is no need to declare a column as
+geometric. The plugin will get this information by itself.
+</p>
+<h4>Access</h4>
+<p>
+Here is an example of PostGIS row creation and access, using the model and
+the table defined above :
+</p>
+<pre>
+        pt = TablePoint.new(:data =&gt; &quot;Hello!&quot;,:geom =&gt; Point.from_x_y_z(-1.6,2.8,-3.4,123))
+        pt.save
+        pt = TablePoint.find_first
+        puts pt.geom.x #access the geom column like any other
+</pre>
+<p>
+For MySQL, it is slightly different since it does not support Z dimension
+or SRID :
+</p>
+<pre>
+        pt = TablePoint.new(:data =&gt; &quot;Hello!&quot;,:geom =&gt; Point.from_x_y(-1.6,2.8))
+        pt.save
+        pt = TablePoint.find_first
+        puts pt.geom.x #access the geom column like any other
+</pre>
+<h4>Fixtures</h4>
+<p>
+If you use fixtures for your unit tests, at some point, you will want to
+input a geometry. You could transform your geometries to a form suitable
+for YAML yourself everytime but the spatial adapter provides a method to do
+it for you: <tt>to_yaml</tt>. It works for both MySQL and PostGIS (although
+the string returned is different for each database). You would use it like
+this, if the geometric column is a point:
+</p>
+<pre>
+        fixture:
+         id: 1
+         data: HELLO
+         geom: &lt;%= Point.from_x_y(123.5,321.9).to_yaml %&gt;
+</pre>
+<h4>Find_by</h4>
+<p>
+find_by_[column] has been redefined when column is of a geometric type.
+Instead of using the Rails default &#8217;=&#8217; operator, for which I
+can&#8216;t see a definition for MySql spatial datatypes and which performs
+a bounding box equality test in PostGIS, it uses a bounding box
+intersection: &amp;&amp; in PostGIS and MBRIntersects in MySQL, which can
+both make use of a spatial index if one is present to speed up the queries.
+You could use this query, for example, if you need to display data from the
+database: You would want only the geometries which are in the screen
+rectangle and you could use a bounding box query for that. Since this is a
+common case, it is the default. You have 2 ways to use the
+find_by_[geom_column]: Either by passing a geometric object directly, or
+passing an array with the 2 opposite corners of a bounding box (with 2 or 3
+coordinates depending of the dimension of the data).
+</p>
+<pre>
+        Park.find_by_geom(LineString.from_coordinates([[1.4,5.6],[2.7,8.9],[1.6,5.6]]))
+</pre>
+<p>
+or
+</p>
+<pre>
+        Park.find_by_geom([[3,5.6],[19.98,5.9]])
+</pre>
+<p>
+In PostGIS, since you can only use operations with geometries with the same
+SRID, you can add a third element representing the SRID of the bounding box
+to the array. It is by default set to -1:
+</p>
+<pre>
+        Park.find_by_geom([[3,5.6],[19.98,5.9],123])
+</pre>
+<h4>Geometric data types</h4>
+<p>
+Ruby geometric datatypes are currently made available only through the
+GeoRuby library (<a
+href="http://thepochisuperstarmegashow.com/ProjectsDoc/georuby-doc/index.html">thepochisuperstarmegashow.com/ProjectsDoc/georuby-doc/index.html</a>):
+This is where the <tt>Point.from_x_y</tt> in the example above comes from.
+It is a goal of a future release of the Spatial Adapter to support
+additional geometric datatype libraries, such as Ruby/GEOS, as long as they
+can support reading and writing of EWKB.
+</p>
+<h3>Warning</h3>
+<ul>
+<li>If you use a version of MySQL before 5.0.16, only tables using the MyISAM
+engine can support geometric columns. After MySQL 5.0.16, any engine
+(incuding INNODB) is supported.
+
+</li>
+<li>Since <a href="../../../../classes/ActiveRecord.html">ActiveRecord</a>
+seems to keep only the string values directly returned from the database,
+it translates from these to the correct types everytime an attribute is
+read, which is probably ok for simple types, but might be less than
+efficient for geometries, since the EWKB string has to be parsed everytime.
+Also it means you cannot modify the geometry object returned from an
+attribute directly :
+
+<pre>
+     place = Place.find_first
+     place.the_geom.y=123456.7
+</pre>
+</li>
+<li>Since the translation to a geometry is performed everytime the_geom is
+read, the change to y will not be saved! You would have to do something
+like this :
+
+<pre>
+     place = Place.find_first
+     the_geom = place.the_geom
+     the_geom.y=123456.7
+     place.the_geom = the_geom
+</pre>
+</li>
+</ul>
+<h3>Changes since last version</h3>
+<ul>
+<li>The PostGIS adapter and the MySql Spatial adapter have been merged into one
+plugin. The correct files to load is determined using the type of
+connection defined in the environment.
+
+</li>
+<li>Geometric columns can now be dumped just like other base data types. This
+means you can use the ruby schema mode, even if you use the plugin.
+
+</li>
+<li>Support of M dimensions in migrations. The <tt>:dimension</tt> key in the
+column definition has disappeared and has been replaced by <tt>:with_z</tt>
+and <tt>:with_m</tt>.
+
+</li>
+<li>Addition of unit tests. At the plugin root, Run <tt>rake test:mysql</tt> to
+run the mysql tests and <tt>rake test:postgis</tt> for the postgis ones.
+You will need to configure your connection in
+<tt>test/db/database_mysql.yml</tt> and
+<tt>test/db/database_postgis.yml</tt>. If you get errors on your platform,
+please report to <a
+href="mailto:guilhem.vellut+georuby@gmail.com">guilhem.vellut+georuby@gmail.com</a>.
+
+</li>
+<li>Addition of a find_by methods with a special behaviour for geometries
+
+</li>
+<li>Addition of a to_yaml method to use inside a YAML fixture
+
+</li>
+</ul>
+<h3>TODO</h3>
+<ul>
+<li>Support of other geometric datatype libraries in addition to GeoRuby
+
+</li>
+<li>Tutorials
+
+</li>
+</ul>
+<h3>License</h3>
+<p>
+The Spatial Adapter for Rails is released under the MIT license.
+</p>
+<h3>Support</h3>
+<p>
+Any questions, enhancement proposals, bug notifications or corrections can
+be sent to <a
+href="mailto:guilhem.vellut+georuby@gmail.com">guilhem.vellut+georuby@gmail.com</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<%= icon :title => :new_file, :size => :medium %> 
+<span class = "header">Select Columns</span>
+<div class = "instructions">
+	Choose the columns from this file that you would like to import into Webmapps. All data from non-selected columns will not be imported. 
+</div>
+<div id = 'input'>
+	<% form_tag :action => 'process_columns' do %>
+		<p>
+			[<a onClick = "toggleSelect()">Toggle Selection</a>]
+			<ul id = "columns">
+				<% @columns.each do |column| %>
+					<li class = "checkbox">
+						<%= check_box_tag 'included_columns[]', column[:name] %> <i><%=column[:type] %></i> <%= column[:name] %>
+					</li>  
+			<% end %>
+			</ul>
+		</p>
+		<input id = "button" name="commit" type="submit" value="Upload" onClick = "loading()" />	<% end %>
+</div>
+
+
+<script>
+	function toggleSelect() {
+		columns = $('columns').getElementsByClassName('checkbox');
+		if (columns[0].childElements()[0].checked)
+		{
+			for (var i = 0; i< columns.length; i++) { columns[i].childElements()[0].checked = false; }
+		}
+		else
+		{
+			for (var i = 0; i< columns.length; i++) { columns[i].childElements()[0].checked = true; }
+		}
+	}
+	
+	function loading() {
+		$('button').hide();
+		loading_image = document.createElement('img');
+		loading_image.src = "/images/loading.gif";
+		$('input').appendChild(loading_image);
+		message = document.createElement('h3');
+		message.innerHTML = "Importing Data. Don't close window until import is complete."
+		$('input').appendChild(message);	
+	}
+</script>

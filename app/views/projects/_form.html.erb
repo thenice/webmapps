@@ -1,0 +1,13 @@
+<% form_for @project do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <strong><%= f.label :title %></strong><br />
+    <%= f.text_field :title, :class => 'big_one_line_input' %>
+  </p>
+  <p>
+    <strong><%= f.label :description %></strongs><br />
+    <%= f.text_area :description, :class => 'big__multi_line_input' %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+  <p><%= link_to "Cancel Edit", :action => 'show', :controller => 'projects' %>
+<% end %>

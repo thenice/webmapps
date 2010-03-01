@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/streamlined/README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Mar 17 02:54:08 +0600 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../../../classes/Streamlined.html">Streamlined</a> - <a
+href="http://streamlinedframework.org">streamlinedframework.org</a>/
+</p>
+<h6>=============</h6>
+<p>
+<a href="../../../../classes/Streamlined.html">Streamlined</a> allows you
+to quickly generate useful user interfaces, declaratively.
+</p>
+<p>
+<a href="../../../../classes/Streamlined.html">Streamlined</a> is not a
+code generator. It relies on you having an existing database schema,
+controllers and models. If you have not done so yet, follow the
+instructions in the &quot;Rolling with Ruby on Rails Revisited&quot;
+article series at&#8230;
+</p>
+<p>
+<a
+href="http://www.onlamp.com/pub/a/onlamp/2006/12/14/revisiting-ruby-on-rails-revisited.html">www.onlamp.com/pub/a/onlamp/2006/12/14/revisiting-ruby-on-rails-revisited.html</a>
+</p>
+<p>
+&#8230;to create a database and some controllers and models. Then, to make
+any controller into a <a
+href="../../../../classes/Streamlined.html">Streamlined</a> controller, do
+the following:
+</p>
+<pre>
+  class MyNiftyController &lt; ApplicationController
+    layout 'streamlined'
+    acts_as_streamlined
+
+    ...[anything else you want to do]
+  end
+</pre>
+<p>
+More documentation can be found on the <a
+href="../../../../classes/Streamlined.html">Streamlined</a> wiki at <a
+href="http://trac.streamlinedframework.org">trac.streamlinedframework.org</a>/
+</p>
+<p>
+NOTE: You cannot extend ApplicationController with acts_as_streamlined,
+only children of ApplicationController.
+</p>
+<h2>Running tests</h2>
+<p>
+<a href="../../../../classes/Streamlined.html">Streamlined</a> comes
+bundled with a set of unit and functional tests. You must install the
+latest versions of the following gems to run these tests:
+</p>
+<ul>
+<li>flexmock (0.6.2 or higher)
+
+</li>
+<li>rcov (0.7.0.1 or higher)
+
+</li>
+<li>mocha (0.5.5)
+
+</li>
+<li>test-spec (0.4.0 or higher)
+
+</li>
+</ul>
+<p>
+To initialize your local database and run the tests, execute:
+</p>
+<p>
+&gt; cd vendor/plugins/streamlined &gt; rake test:build_mysql_databases
+&gt; rake
+</p>
+<p>
+If database creation task fails, make sure your config/database.yml file is
+configured properly for your local installation of MySQL.
+</p>
+<p>
+Clone or view the <a
+href="../../../../classes/Streamlined.html">Streamlined</a> Source at: <a
+href="http://github.com/relevance/streamlined">github.com/relevance/streamlined</a>/
+Clone or view some sample apps as: <a
+href="http://github.com/relevance/streamlined_samples">github.com/relevance/streamlined_samples</a>/
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

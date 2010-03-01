@@ -1,0 +1,3 @@
+page['pane'].fade :duration => 1.0
+page.replace_html "project-#{@project.id}", :partial => 'projects/project', :locals => { :project => @project }
+page["project-#{@project.id}"].highlight :duration => 10.0

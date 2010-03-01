@@ -1,0 +1,32 @@
+<h1>Editing layer_filter</h1>
+
+<% form_for(@layer_filter) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :layer_id %><br />
+    <%= f.text_field :layer_id %>
+  </p>
+  <p>
+    <%= f.label :column_name %><br />
+    <%= f.text_field :column_name %>
+  </p>
+  <p>
+    <%= f.label :operation %><br />
+    <%= f.text_field :operation %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @layer_filter %> |
+<%= link_to 'Back', layer_filters_path %>

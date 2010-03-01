@@ -1,0 +1,3 @@
+page << "$('pane_tabs').getElementsByClassName('selected_tab')[0].removeClassName('selected_tab')"
+page << "$('pane_tabs').getElementsBySelector('#tab_edit')[0].toggleClassName('selected_tab')"
+page.replace_html 'content', :partial => 'projects/tab_edit'

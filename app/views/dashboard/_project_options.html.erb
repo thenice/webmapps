@@ -1,0 +1,5 @@
+<div class = "project_options">
+	<%= link_to "Open", :action => 'edit' %> |  
+	<%= link_to_remote "Preferences", :url => { :action => 'preferences', :id => project.id } %> | 
+	<%= link_to_remote "Delete", :url => { :action => :destroy }, :confirm => "Are you sure?" %> 	
+</div>

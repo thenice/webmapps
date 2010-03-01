@@ -1,0 +1,9 @@
+<div class = "instructions">
+	Please select a CSV File to upload. If the file contains "x" and "y" columns, or "longitude" and "latitude" columns, these will be used to geo-reference each feature. If the file contains "street_address", "city" and "state" columns, these will be used to geocode each feature. Please read the help files for more details.
+</div>
+<div id = 'input'>
+	<% form_tag 'process_csv_upload', { :multipart => true } do %>
+	    <label for="csv">.csv</label> <%= file_field_tag "csv_file" %><br /><br />
+	    <%= submit_tag 'Upload' %>
+	<% end %>
+</div>

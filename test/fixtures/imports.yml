@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  format: MyString
+  reliability: 1
+  source: MyString
+  external_url: MyString
+  user_id: 1
+  layer_id: 1
+  title: MyString
+  short_name: MyString
+
+two:
+  format: MyString
+  reliability: 1
+  source: MyString
+  external_url: MyString
+  user_id: 1
+  layer_id: 1
+  title: MyString
+  short_name: MyString

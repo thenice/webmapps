@@ -1,0 +1,44 @@
+<h1>Editing layer_setting</h1>
+
+<% form_for(@layer_setting) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :buffer_size %><br />
+    <%= f.text_field :buffer_size %>
+  </p>
+  <p>
+    <%= f.label :buffer_fill_color %><br />
+    <%= f.text_field :buffer_fill_color %>
+  </p>
+  <p>
+    <%= f.label :buffer_stroke_color %><br />
+    <%= f.text_field :buffer_stroke_color %>
+  </p>
+  <p>
+    <%= f.label :fill_color %><br />
+    <%= f.text_field :fill_color %>
+  </p>
+  <p>
+    <%= f.label :stroke_color %><br />
+    <%= f.text_field :stroke_color %>
+  </p>
+  <p>
+    <%= f.label :stroke_weight %><br />
+    <%= f.text_field :stroke_weight %>
+  </p>
+  <p>
+    <%= f.label :opacity %><br />
+    <%= f.text_field :opacity %>
+  </p>
+  <p>
+    <%= f.label :layer_id %><br />
+    <%= f.text_field :layer_id %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @layer_setting %> |
+<%= link_to 'Back', layer_settings_path %>

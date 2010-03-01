@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Webmapps::ActsAsSpatial::ClassMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Webmapps::ActsAsSpatial::ClassMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial_rb.html">
+                vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000017">acts_as_spatial?</a>&nbsp;&nbsp;
+      <a href="#M000020">collect_all_shapes</a>&nbsp;&nbsp;
+      <a href="#M000012">extract_contains_from_options</a>&nbsp;&nbsp;
+      <a href="#M000010">extract_intersects_from_options</a>&nbsp;&nbsp;
+      <a href="#M000011">extract_overlaps_from_options</a>&nbsp;&nbsp;
+      <a href="#M000013">extract_touches_from_options</a>&nbsp;&nbsp;
+      <a href="#M000014">extract_within_from_options</a>&nbsp;&nbsp;
+      <a href="#M000008">find</a>&nbsp;&nbsp;
+      <a href="#M000022">get_all_for_multi_geometry</a>&nbsp;&nbsp;
+      <a href="#M000021">get_geometry_type</a>&nbsp;&nbsp;
+      <a href="#M000016">has_columns</a>&nbsp;&nbsp;
+      <a href="#M000009">prepare_for_find</a>&nbsp;&nbsp;
+      <a href="#M000015">prepare_sql</a>&nbsp;&nbsp;
+      <a href="#M000023">singular_geometry_type</a>&nbsp;&nbsp;
+      <a href="#M000018">spatial_query</a>&nbsp;&nbsp;
+      <a href="#M000019">to_geometry_collection</a>&nbsp;&nbsp;
+      <a href="#M000024">to_wkt</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">sql_where</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">acts_as_spatial?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 142</span>
+142:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">acts_as_spatial?</span>
+143:         <span class="ruby-keyword kw">true</span>
+144:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="#M000020" class="method-signature">
+          <span class="method-name">collect_all_shapes</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+MULTIPOLYGON(POLYGON((..,..,..,)),POLYGON((..,..,..)))
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 176</span>
+176:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collect_all_shapes</span>
+177:         <span class="ruby-identifier">get_geometry_type</span>.<span class="ruby-identifier">upcase</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'('</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">get_all_for_multi_geometry</span> <span class="ruby-operator">+</span> <span class="ruby-value str">')'</span>
+178:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">extract_contains_from_options</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 117</span>
+117:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_contains_from_options</span>(<span class="ruby-identifier">options</span>)
+118:         <span class="ruby-identifier">prepare_sql</span>(<span class="ruby-value str">&quot;ST_Contains&quot;</span>, <span class="ruby-identifier">to_wkt</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:contains</span>]))
+119:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:contains</span>)
+120:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">extract_intersects_from_options</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+ST_* methods are defined in the PostGIS adapter
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 107</span>
+107:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_intersects_from_options</span>(<span class="ruby-identifier">options</span>)
+108:         <span class="ruby-identifier">prepare_sql</span>(<span class="ruby-value str">&quot;ST_Intersects&quot;</span>, <span class="ruby-identifier">to_wkt</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:intersects</span>]))
+109:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:intersects</span>)
+110:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">extract_overlaps_from_options</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 112</span>
+112:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_overlaps_from_options</span>(<span class="ruby-identifier">options</span>)
+113:         <span class="ruby-identifier">prepare_sql</span>(<span class="ruby-value str">&quot;ST_Overlaps&quot;</span>, <span class="ruby-identifier">to_wkt</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:overlaps</span>]))
+114:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:overlaps</span>)
+115:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">extract_touches_from_options</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 122</span>
+122:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_touches_from_options</span>(<span class="ruby-identifier">options</span>)
+123:         <span class="ruby-identifier">prepare_sql</span>(<span class="ruby-value str">&quot;ST_Touches&quot;</span>, <span class="ruby-identifier">to_wkt</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:touches</span>]))
+124:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:touches</span>)
+125:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="#M000014" class="method-signature">
+          <span class="method-name">extract_within_from_options</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 127</span>
+127:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_within_from_options</span>(<span class="ruby-identifier">options</span>)
+128:         <span class="ruby-identifier">prepare_sql</span>(<span class="ruby-value str">&quot;ST_Within&quot;</span>, <span class="ruby-identifier">to_wkt</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:within</span>]))
+129:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:within</span>)
+130:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">find</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+extend the <a href="ClassMethods.html#M000008">find</a> method to permit
+spatial querying
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 75</span>
+75:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+76:         <span class="ruby-comment cmt"># create an array where the spatial query conditions</span>
+77:         <span class="ruby-comment cmt"># will be stored</span>
+78:         <span class="ruby-ivar">@sql_where</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+79:         <span class="ruby-identifier">prepare_for_find</span>(<span class="ruby-identifier">args</span>)
+80:         <span class="ruby-comment cmt"># if the client passed in spatial query options,</span>
+81:         <span class="ruby-comment cmt"># then limit the scope of further queries to results</span>
+82:         <span class="ruby-comment cmt"># that match the spatial query</span>
+83:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@sql_where</span>.<span class="ruby-identifier">blank?</span>
+84:           <span class="ruby-identifier">with_scope</span>(<span class="ruby-identifier">:find</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@sql_where</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; AND &quot;</span>) } ) <span class="ruby-keyword kw">do</span>
+85:             <span class="ruby-keyword kw">super</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+86:           <span class="ruby-keyword kw">end</span>
+87:         <span class="ruby-comment cmt"># if no spatial query options were specified, then</span>
+88:         <span class="ruby-comment cmt"># perform a normal find</span>
+89:         <span class="ruby-keyword kw">else</span>
+90:           <span class="ruby-keyword kw">super</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+91:         <span class="ruby-keyword kw">end</span>
+92:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="#M000022" class="method-signature">
+          <span class="method-name">get_all_for_multi_geometry</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+aggregates the entire table&#8216;s geometries in WKT format
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 192</span>
+192:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_all_for_multi_geometry</span>
+193:         ( (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find</span> <span class="ruby-identifier">:all</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> ( <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">geom_column</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">as_wkt</span> ).<span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">singular_geometry_type</span>.<span class="ruby-identifier">upcase</span>, <span class="ruby-value str">&quot;&quot;</span>)  } ).<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+194:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="#M000021" class="method-signature">
+          <span class="method-name">get_geometry_type</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+this is ugly.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 181</span>
+181:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_geometry_type</span>
+182:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">geometry_type</span>.<span class="ruby-identifier">blank?</span>
+183:           <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+184:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">geometry_type</span> = (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>)).<span class="ruby-identifier">geometry_type</span>
+185:           <span class="ruby-keyword kw">end</span>
+186:         <span class="ruby-keyword kw">else</span>
+187:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">geometry_type</span>
+188:         <span class="ruby-keyword kw">end</span>
+189:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">has_columns</span><span class="method-args">(column_list = [])</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 138</span>
+138:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_columns</span>(<span class="ruby-identifier">column_list</span> = [])
+139:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">to_set</span>.<span class="ruby-identifier">superset?</span> (<span class="ruby-identifier">column_list</span>.<span class="ruby-identifier">to_set</span>)
+140:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">prepare_for_find</span><span class="method-args">(args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 94</span>
+ 94:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_for_find</span>(<span class="ruby-identifier">args</span>)
+ 95:         <span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">defined?</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">extract_options_from_args!</span>(<span class="ruby-identifier">args</span>)
+ 96:         <span class="ruby-comment cmt"># extract methods determine if the given query method</span>
+ 97:         <span class="ruby-comment cmt"># and passes of the conditions to prepare_sql()</span>
+ 98:         <span class="ruby-identifier">extract_intersects_from_options</span>(<span class="ruby-identifier">options</span>)
+ 99:         <span class="ruby-identifier">extract_overlaps_from_options</span>(<span class="ruby-identifier">options</span>)
+100:         <span class="ruby-identifier">extract_contains_from_options</span>(<span class="ruby-identifier">options</span>)
+101:         <span class="ruby-identifier">extract_touches_from_options</span>(<span class="ruby-identifier">options</span>)
+102:         <span class="ruby-identifier">extract_within_from_options</span>(<span class="ruby-identifier">options</span>)
+103:         <span class="ruby-identifier">args</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">options</span>)
+104:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="#M000015" class="method-signature">
+          <span class="method-name">prepare_sql</span><span class="method-args">(st_method, geometry)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+appends to the @sql_where array a condition of the query
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 134</span>
+134:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_sql</span>(<span class="ruby-identifier">st_method</span>, <span class="ruby-identifier">geometry</span>)
+135:         <span class="ruby-ivar">@sql_where</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-node">&quot;#{st_method}(#{self.geom_column}, '#{geometry}')&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">geometry</span>.<span class="ruby-identifier">blank?</span>
+136:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">singular_geometry_type</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+if the geometry for this object is a MultiPolygon, this will return
+&quot;Polygon&quot;
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 197</span>
+197:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">singular_geometry_type</span>
+198:         (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_geometry_type</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/Multi/</span>, <span class="ruby-value str">''</span>)
+199:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="#M000018" class="method-signature">
+          <span class="method-name">spatial_query</span><span class="method-args">(spatial_function, geometry_as_wkt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+performs a PostGIS spatial query of the type defined by the
+spatial_function value passed in and returns an array of GeoRuby geometries
+that were returned from the query.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 149</span>
+149:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spatial_query</span>(<span class="ruby-identifier">spatial_function</span>, <span class="ruby-identifier">geometry_as_wkt</span>)
+150:         <span class="ruby-identifier">conn</span> = <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>
+151:         <span class="ruby-identifier">uncleaned_values</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;select ST_AsText(#{spatial_function}(ST_Geometry('#{geometry_as_wkt}'), \&quot;#{self.geom_column}\&quot; )) AS #{self .geom_column} FROM \&quot;#{self.table_name}\&quot;;&quot;</span>)
+152:         <span class="ruby-identifier">cleaned_values</span> = <span class="ruby-identifier">uncleaned_values</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;GEOMETRYCOLLECTION EMPTY&quot;</span> }
+153:         <span class="ruby-identifier">geom_arr</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+154:           <span class="ruby-identifier">cleaned_values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+155:             <span class="ruby-keyword kw">begin</span>
+156:               <span class="ruby-identifier">geom_arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Geometry</span>.<span class="ruby-identifier">from_ewkt</span>(<span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>])
+157:             <span class="ruby-keyword kw">rescue</span>
+158:               <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Couldn't add a value from spatial query: #{val}&quot;</span>
+159:             <span class="ruby-keyword kw">end</span>
+160:           <span class="ruby-keyword kw">end</span>
+161:         <span class="ruby-identifier">geom_arr</span>
+162:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="#M000019" class="method-signature">
+          <span class="method-name">to_geometry_collection</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns a string of all features in the layer represented as a
+GEOMETRYCOLLECTION WKT represetnation
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 166</span>
+166:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_geometry_collection</span>
+167:         <span class="ruby-value str">'GEOMETRYCOLLECTION('</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">geom_column</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">geom_column</span>).<span class="ruby-identifier">as_wkt</span> }).<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">')'</span>
+168:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">to_wkt</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+takes either a string, object that implements acts_as_spatial, or a GeoRuby
+Point, Polygon, MultiPolygon, or Line and returns the wkt representation.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_spatial/lib/webmapps/acts_as_spatial.rb, line 204</span>
+204:        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_wkt</span>(<span class="ruby-identifier">value</span>)
+205:          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">blank?</span>
+206:            <span class="ruby-comment cmt"># if value is already passed in as wkt, return it.</span>
+207:            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
+208:              <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span>
+209:            <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">value</span>.<span class="ruby-identifier">extended_by</span>).<span class="ruby-identifier">include?</span> <span class="ruby-value str">&quot;GeoRuby::SimpleFeatures&quot;</span>
+210:              <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value str">&quot;as_wkt&quot;</span>)
+211:            <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value str">&quot;acts_as_spatial?&quot;</span>)
+212:              <span class="ruby-identifier">v</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">geom_column</span>)
+213:              <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value str">&quot;as_wkt&quot;</span>)
+214:            <span class="ruby-keyword kw">end</span>
+215:          <span class="ruby-keyword kw">else</span>
+216:            <span class="ruby-keyword kw">nil</span>
+217:          <span class="ruby-keyword kw">end</span>
+218:        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

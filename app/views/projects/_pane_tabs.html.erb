@@ -1,0 +1,16 @@
+<div id = "pane_tabs">
+	<ul>
+		<li id = "tab_edit">
+			<%= link_to_remote 'description', 
+				:url => { :action => 'tab_edit', :controller => 'projects', :partial => 'tab_edit', :id => project } %>
+		</li>
+		<li id = "tab_sharing" class = "selected_tab">
+			<%= link_to_remote 'sharing', 
+				:url => { :action => 'tab_sharing', :controller => 'projects', :partial => 'tab_sharing', :id => project } %>
+		</li>
+		<li id = "tab_privileges">
+			<%= link_to_remote 'privileges', 
+				:url => { :action => 'tab_privileges', :controller => 'projects', :partial => 'tab_privileges', :id => project } %>
+		</li>
+	</ul>
+</div>

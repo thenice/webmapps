@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>webmapps</title>
+		<%= javascript_include_tag :defaults %>
+	</head>
+	<body>
+		<p style = "color: red;"><%= flash[:error] unless flash[:error].blank? %></p>
+		<p style = "color: green;"><%= flash[:notice] unless flash[:notice].blank? %></p>
+		<p>
+			<%= yield %>
+		</p>
+	</body>
+</html>
