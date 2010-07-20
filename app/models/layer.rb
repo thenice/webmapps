@@ -118,7 +118,6 @@ class Layer < ActiveRecord::Base
   def filtered_features_query
     self.layer_filters.collect { |filter| "\"#{filter.column_name}\" #{filter.operation} '#{filter.value}'"}.join(" AND ")
   end
-  
-  
+
 
 end
