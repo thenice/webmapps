@@ -127,7 +127,6 @@ var AppControllerInstance = nil;
 -(void)collectionViewDidChangeSelection:(CPCollectionView)collectionView
 {
 	selectedLayer = collectionView._content[[[collectionView selectionIndexes] firstIndex]];
-	inspector = [InspectorController sharedController];
 	
 }
 @end
